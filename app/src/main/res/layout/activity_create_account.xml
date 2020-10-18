@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".CreateAccount">
+
+	<TextView
+		android:id="@+id/login_headtitel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:gravity="center"
+		android:text="@string/login_headtitel"
+		android:textAllCaps="false"
+		android:textSize="30sp"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<CheckBox
+		android:id="@+id/login_messageOption_letter"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="16dp"
+		android:checked="false"
+		android:text="@string/login_messageOption_letter"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_headtitel" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/login_messageOption_letter_detailContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter">
+
+		<TextView
+			android:id="@+id/login_messageOption_letter_detail_txtname"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Name:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/login_messageOption_letter_detail_name"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="Name"
+			android:inputType="textPersonName"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtname" />
+
+		<TextView
+			android:id="@+id/login_messageOption_letter_detail_txtfirstname"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Vorname:"
+			app:layout_constraintStart_toStartOf="@+id/login_messageOption_letter_detail_firstname"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/login_messageOption_letter_detail_firstname"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
+			android:ems="10"
+			android:hint="Vorname"
+			android:inputType="textPersonName"
+			app:layout_constraintStart_toEndOf="@+id/login_messageOption_letter_detail_name"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtname" />
+
+		<TextView
+			android:id="@+id/login_messageOption_letter_detail_txtstreet"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:text="Straße + Hausnr.:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_name" />
+
+		<EditText
+			android:id="@+id/login_messageOption_letter_detail_street"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="Straße + Hausnr."
+			android:inputType="textPersonName"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtstreet" />
+
+		<TextView
+			android:id="@+id/login_messageOption_letter_detail_txtpostcode"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:text="PLZ"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_street" />
+
+		<EditText
+			android:id="@+id/login_messageOption_letter_detail_postcode"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="PLZ"
+			android:inputType="numberSigned"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtpostcode" />
+
+		<TextView
+			android:id="@+id/login_messageOption_letter_detail_txtcity"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginTop="8dp"
+			android:text="Ort"
+			app:layout_constraintStart_toEndOf="@+id/login_messageOption_letter_detail_postcode"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_street" />
+
+		<EditText
+			android:id="@+id/login_messageOption_letter_detail_city"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="Ort"
+			android:inputType="textPersonName"
+			app:layout_constraintStart_toStartOf="@+id/login_messageOption_letter_detail_txtcity"
+			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtcity" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<TextView
+		android:id="@+id/login_messageOption_errorLetter"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:textColor="@color/warn"
+		android:visibility="gone"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detailContainer" />
+
+	<CheckBox
+		android:id="@+id/login_messageOption_mail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/login_messageOption_mail"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_errorLetter" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/login_messageOption_mail_detailContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_mail">
+
+		<EditText
+			android:id="@+id/login_messageOption_detail_mail"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="E-Mail"
+			android:inputType="textEmailAddress"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<TextView
+		android:id="@+id/login_messageOption_errorMail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:textColor="@color/warn"
+		android:visibility="gone"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_mail_detailContainer" />
+
+	<CheckBox
+		android:id="@+id/login_messageOption_push"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/login_messageOption_push"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_errorMail" />
+
+	<CheckBox
+		android:id="@+id/login_messageOption_app"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:checked="true"
+		android:clickable="false"
+		android:text="@string/login_messageOption_app"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_push" />
+
+	<Button
+		android:id="@+id/login_continue"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="32dp"
+		android:layout_marginRight="32dp"
+		android:layout_marginBottom="32dp"
+		android:text="@string/login_continue"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
