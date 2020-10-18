@@ -1,9 +1,25 @@
 package com.example.hackaton2020;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.Manifest;
 import android.os.Bundle;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.zxing.Result;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+public class MainActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+
+	private ZXingScannerView scannerView;
+	private TextView textResult;
 
     //Beim erstellen der Activity wird diese Methode aufgerufen
     //Ruft onStart() auf
@@ -11,6 +27,29 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		scannerView = (ZXingScannerView)findViewById(R.id.zxscan);
+		textResult = (TextView) findViewById(R.id.txtBarcodeValue);
+
+		Dexter.withActivity(this)
+				.withPermission(Manifest.permission.CAMERA)
+				.withListener(new PermissionListener() {
+					@Override
+					public void onPermissionGranted(PermissionGrantedResponse response) {
+						scannerView.setResultHandler(MainActivity.this);
+						scannerView.startCamera();
+					}
+
+					@Override
+					public void onPermissionDenied(PermissionDeniedResponse response) {
+
+					}
+
+					@Override
+					public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+					}
+				})
+				.check();
 	}
 
 	//Nach dem erstellen und bei jedem Start der Activity wird diese Methode aufgerufen
@@ -44,9 +83,16 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
     }
 
-    //Beim endgültigen beenden wird diese MEthode aufgerufen
+    //Beim endgültigen beenden wird diese Methode aufgerufen
     @Override
 	protected void onDestroy() {
+		scannerView.stopCamera();
 		super.onDestroy();
+	}
+
+	@Override
+	public void handleResult(Result rawResult) {
+		textResult.setText(rawResult.getText());
+		scannerView.startCamera();
 	}
 }
