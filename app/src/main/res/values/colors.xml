@@ -11,4 +11,5 @@
 	<color name="warn">#F44336</color>
 	<color name="warn_light">#FF5252</color>
 	<color name="warn_dark">#C62828</color>
+	<color name="apply">#0A9A00</color>
 </resources>

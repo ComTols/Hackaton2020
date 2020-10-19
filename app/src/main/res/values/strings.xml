@@ -6,4 +6,18 @@
 	<string name="login_messageOption_push">Per Push-Benachrichtigung</string>
 	<string name="login_messageOption_app">In der App</string>
 	<string name="login_continue">Weiter</string>
+	<string name="main_CodeResult">Kein QR-Code gefunden</string>
+	<string name="checkPerson_whoIsGuest">Wer ist Gast?</string>
+	<string name="checkPerson_whoIsGuest_me">Ich</string>
+	<string name="checkPerson_addPersonButton">Person hinzufügen</string>
+	<string name="checkPerson_finishButton">Fertig</string>
+	<string name="addPerson_headline">Eine Person hinzufügen</string>
+	<string name="cancel">Abbrechen</string>
+	<string name="addPerson_continue">Hinzufügen</string>
+	<string name="forename">Vorname</string>
+	<string name="lastname">Nachname</string>
+	<string name="street_number">Straße + Hausnr.</string>
+	<string name="postcode">PLZ</string>
+	<string name="city">Ort</string>
+	<string name="mail">E-Mail</string>
 </resources>

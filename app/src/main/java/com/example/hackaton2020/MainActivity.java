@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	@Override
 	public void handleResult(Result rawResult) {
 		textResult.setText(rawResult.getText());
-		scannerView.startCamera();
+		Intent intentCheckPerson = new Intent(this, CheckPerson.class);
+		startActivity(intentCheckPerson);
 	}
 }

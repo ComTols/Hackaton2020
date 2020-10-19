@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".AddPerson">
+
+	<TextView
+		android:id="@+id/addPerson_headline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:text="@string/addPerson_headline"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<EditText
+		android:id="@+id/addPerson_forename"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:ems="10"
+		android:hint="@string/forename"
+		android:inputType="textPersonName"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtforename" />
+
+	<EditText
+		android:id="@+id/addPerson_lastname"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:ems="10"
+		android:hint="@string/lastname"
+		android:inputType="textPersonName"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtlastname" />
+
+	<TextView
+		android:id="@+id/addPerson_txtforename"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="24dp"
+		android:text="@string/forename"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_headline" />
+
+	<TextView
+		android:id="@+id/addPerson_txtlastname"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/lastname"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtforename_error" />
+
+	<TextView
+		android:id="@+id/addPerson_txtforename_error"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:text="Vorname erforderlich"
+		android:textColor="@color/warn"
+		android:visibility="gone"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_forename" />
+
+	<TextView
+		android:id="@+id/addPerson_txtlastname_error"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:text="Nachname erforderlich"
+		android:textColor="@color/warn"
+		android:visibility="gone"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_lastname" />
+
+	<CheckBox
+		android:id="@+id/addPerson_messageOption_letter"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="16dp"
+		android:text="@string/login_messageOption_letter"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtlastname_error" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/addPerson_messageOption_letter_details"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter">
+
+		<EditText
+			android:id="@+id/addPerson_messageOption_letter_details_street"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/street_number"
+			android:inputType="textPersonName"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_txtstreet" />
+
+		<TextView
+			android:id="@+id/addPerson_messageOption_letter_details_txtstreet"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:text="@string/street_number"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<EditText
+			android:id="@+id/addPerson_messageOption_letter_details_postcode"
+			android:layout_width="150dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/postcode"
+			android:inputType="numberSigned"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_txtpostcode" />
+
+		<TextView
+			android:id="@+id/addPerson_messageOption_letter_details_txtpostcode"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:text="@string/postcode"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_street" />
+
+		<TextView
+			android:id="@+id/addPerson_messageOption_letter_details_txtcity"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginTop="8dp"
+			android:text="@string/city"
+			app:layout_constraintStart_toEndOf="@+id/addPerson_messageOption_letter_details_postcode"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_street" />
+
+		<EditText
+			android:id="@+id/addPerson_messageOption_letter_details_city"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/city"
+			android:inputType="textPersonName"
+			app:layout_constraintStart_toStartOf="@+id/addPerson_messageOption_letter_details_txtcity"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_txtcity" />
+
+		<TextView
+			android:id="@+id/addPerson_messageOption_letter_details_error"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/warn"
+			android:visibility="gone"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details_postcode" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<CheckBox
+		android:id="@+id/addPerson_messageOption_mail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="8dp"
+		android:text="@string/login_messageOption_mail"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details" />
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/addPerson_messageOption_mail_details"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:visibility="gone"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_mail">
+
+		<EditText
+			android:id="@+id/addPerson_messageOption_mail_details_mailAdress"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/mail"
+			android:inputType="textEmailAddress"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:id="@+id/addPerson_messageOption_mail_details_error"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Eine E-Mail ist erforderlich!"
+			android:textColor="@color/warn"
+			android:visibility="gone"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_mail_details_mailAdress" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<Button
+		android:id="@+id/addPerson_cancelBtn"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginBottom="16dp"
+		android:text="@string/cancel"
+		app:backgroundTint="@color/warn_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<Button
+		android:id="@+id/addPerson_applyBtn"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginBottom="16dp"
+		android:text="@string/addPerson_continue"
+		app:backgroundTint="@color/apply"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/addPerson_cancelBtn" />
+
+	<TextView
+		android:id="@+id/addPerson_applyBtn_error"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="Es muss mindestens eine Benachrichtigungsoption ausgewählt werden!"
+		android:textColor="@color/warn"
+		android:visibility="gone"
+		app:layout_constraintBottom_toTopOf="@+id/addPerson_applyBtn"
+		app:layout_constraintEnd_toEndOf="@+id/addPerson_applyBtn"
+		app:layout_constraintStart_toStartOf="@+id/addPerson_applyBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
