@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="black">#FF000000</color>
+	<color name="lightgray">#f1f3f4</color>
 	<color name="white">#FFFFFFFF</color>
 	<color name="primary">#2196F3</color>
 	<color name="primary_light">#448AFF</color>
@@ -12,4 +13,11 @@
 	<color name="warn_light">#FF5252</color>
 	<color name="warn_dark">#C62828</color>
 	<color name="apply">#0A9A00</color>
+	<!--DarkMode-->
+	<color name="blackBackground">#121212</color>
+	<color name="blackForeground">#1F1F1F</color>
+	<color name="blackForeground2">#2E2E2E</color>
+	<color name="TextHighEmphasis">#DEFFFFFF</color>
+	<color name="TextMediumEmphasis">#99FFFFFF</color>
+	<color name="TextDisabled">#61FFFFFF</color>
 </resources>
