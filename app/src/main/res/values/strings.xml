@@ -1,8 +1,8 @@
 <resources>
 	<string name="app_name">Hackaton 2020</string>
 	<string name="login_headtitel">Wie möchtest Du benachrichtigt werden?</string>
-	<string name="login_messageOption_letter">Per Brief</string>
-	<string name="login_messageOption_mail">Per E-Mail</string>
+	<string name="login_messageOption_letter">Benachrichtigung per Brief</string>
+	<string name="login_messageOption_mail">Benachrichtigung per E-Mail</string>
 	<string name="login_messageOption_push">Per Push-Benachrichtigung</string>
 	<string name="login_messageOption_app">In der App</string>
 	<string name="login_continue">Weiter</string>

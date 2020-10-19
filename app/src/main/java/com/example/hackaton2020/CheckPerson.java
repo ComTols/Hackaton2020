@@ -15,6 +15,7 @@ public class CheckPerson extends AppCompatActivity {
 
 	CheckBox[] otherUsers = new CheckBox[70];
 	ConstraintLayout otherUsersList;
+	private String qrResult = getIntent().getStringExtra("qrResult");
 
 	@SuppressLint("SetTextI18n")
 	@Override

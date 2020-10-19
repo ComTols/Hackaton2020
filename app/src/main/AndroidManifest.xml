@@ -17,6 +17,7 @@
 		<activity android:name=".CreateAccount" />
 		<activity android:name=".CheckPerson" />
 		<activity android:name=".AddPerson" />
+		<activity android:name=".HomeScreen" />
 
 		<activity android:name=".MainActivity">
 			<intent-filter>
