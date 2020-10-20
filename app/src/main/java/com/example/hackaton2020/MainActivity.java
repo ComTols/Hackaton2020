@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
 	private ZXingScannerView scannerView;
 	private TextView textResult;
+	private ImageButton menuButton;
 
 	//Beim erstellen der Activity wird diese Methode aufgerufen
 	//Ruft onStart() auf
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		scannerView = findViewById(R.id.zxscan);
 		textResult = findViewById(R.id.txtBarcodeValue);
 
-		ImageButton menuButton = findViewById(R.id.buttonToMenu);
+		menuButton = findViewById(R.id.buttonToMenu);
 		menuButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -117,10 +117,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
 	@Override
 	public void handleResult(Result rawResult) {
-		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
 		textResult.setText(rawResult.getText());
 		Intent intentCheckPerson = new Intent(this, CheckPerson.class);
-		intentCheckPerson.putExtra("qrResult", rawResult.getText());
 		startActivity(intentCheckPerson);
 	}
 }

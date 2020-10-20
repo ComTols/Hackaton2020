@@ -20,4 +20,10 @@
 	<string name="postcode">PLZ</string>
 	<string name="city">Ort</string>
 	<string name="mail">E-Mail</string>
+	<string name="showReady_headline">Bestätigung</string>
+	<string name="showReady_subheading">Bitte der Bedienung zeigen!</string>
+	<string name="showReady_description"><![CDATA[Diese Bestätigung kann später über Menü -> Dieses Lokal aufgerufen werden.]]></string>
+	<string name="showReady_personCount">5</string>
+	<string name="showReady_personCountDescription">... Personen registriert.</string>
+	<string name="back">Zurück</string>
 </resources>
