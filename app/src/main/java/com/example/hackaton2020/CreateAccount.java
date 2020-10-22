@@ -112,7 +112,7 @@ public class CreateAccount extends AppCompatActivity {
 			TextView errorLetter = findViewById(R.id.login_messageOption_errorLetter);
 			if (!(errorMes.equals(""))) {
 				isValid = false;
-				errorLetter.setText(errorMes);
+				errorLetter.setText(errorMes.trim());
 				errorLetter.setVisibility(View.VISIBLE);
 			} else {
 				errorLetter.setVisibility(View.GONE);

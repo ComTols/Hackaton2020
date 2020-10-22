@@ -1,6 +1,8 @@
 package com.example.hackaton2020;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,10 +33,16 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(MainActivity.this.ALARM_SERVICE);
+		Intent startServiceIntent = new Intent(this, CheckServerService.class);
+		PendingIntent startServicePendingIntent = PendingIntent.getService(this, 0, startServiceIntent,0);
+
+		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000*10, 1000*60*60, startServicePendingIntent);
 
 		checkAccountInitialized();
 
-		setContentView(R.layout.activity_main);
 		scannerView = findViewById(R.id.zxscan);
 		textResult = findViewById(R.id.txtBarcodeValue);
 

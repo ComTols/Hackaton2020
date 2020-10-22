@@ -100,7 +100,7 @@ public class AddPerson extends AppCompatActivity {
 			edit.putString("otherUser[" + i + "]_mail", ((EditText) findViewById(R.id.addPerson_messageOption_mail_details_mailAdress)).getText().toString());
 		}
 
-		edit.commit();
+		edit.apply();
 		finish();
 	}
 
@@ -153,7 +153,7 @@ public class AddPerson extends AppCompatActivity {
 				errMas += "Ein Ort ist erforderlich!";
 			}
 			if (!isValid) {
-				letterError.setText(errMas);
+				letterError.setText(errMas.trim());
 				letterError.setVisibility(View.VISIBLE);
 			}
 		}
