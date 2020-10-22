@@ -7,11 +7,16 @@
 	tools:context=".CheckPerson">
 
 	<TextView
-		android:id="@+id/addPerson_restaurantName"
+		android:id="@+id/checkPerson_restaurantName"
+		android:gravity="center"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
 		android:layout_marginTop="32dp"
-		android:text="Restaurant Name"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:text=""
 		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -26,47 +31,22 @@
 		android:layout_marginTop="16dp"
 		android:text="@string/checkPerson_whoIsGuest"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addPerson_restaurantName" />
-
-	<CheckBox
-		android:id="@+id/addPerson_whoIsGuest_me"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
-		android:layout_marginLeft="16dp"
-		android:layout_marginTop="16dp"
-		android:checked="true"
-		android:clickable="false"
-		android:text="@string/checkPerson_whoIsGuest_me"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addPerson_whoIsGuest" />
-
-	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id="@+id/addPerson_whoIsGuest_otherUsersList"
-		android:layout_width="match_parent"
-		android:layout_height="200dp"
-		android:layout_marginStart="16dp"
-		android:layout_marginLeft="16dp"
-		android:layout_marginTop="8dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginRight="16dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addPerson_whoIsGuest_me"/>
+		app:layout_constraintTop_toBottomOf="@+id/checkPerson_restaurantName" />
 
 	<Button
 		android:id="@+id/addPerson_addPersonButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
+		android:layout_marginBottom="8dp"
 		android:text="@string/checkPerson_addPersonButton"
+		android:visibility="visible"
 		app:backgroundTint="@color/accent"
+		app:layout_constraintBottom_toTopOf="@+id/check_finishButton"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/addPerson_whoIsGuest_otherUsersList" />
+		app:layout_constraintStart_toStartOf="parent" />
 
 	<Button
-		android:id="@+id/addPerson_finishButton"
+		android:id="@+id/check_finishButton"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="16dp"
@@ -78,4 +58,21 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
+
+	<ListView
+		android:id="@+id/addPerson_whoIsGuest_otherUsersList"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginBottom="16dp"
+		app:layout_constraintBottom_toTopOf="@+id/addPerson_addPersonButton"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.52"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/addPerson_whoIsGuest" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

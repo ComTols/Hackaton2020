@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ShowReady extends AppCompatActivity {
 
-
+	int countCheckedUsers;
+	TextView counter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_ready);
+
+		countCheckedUsers = getIntent().getIntExtra("countCheckedUsers", 1);
+		System.out.println("Variable übergeben: " + countCheckedUsers);
 
 		Button back = findViewById(R.id.showReady_backBtn);
 		back.setOnClickListener(new View.OnClickListener() {
@@ -23,5 +28,14 @@ public class ShowReady extends AppCompatActivity {
 				navigateUpTo(new Intent(getBaseContext(), MainActivity.class));
 			}
 		});
+
+		counter = findViewById(R.id.showReady_countUsers);
+
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		counter.setText("" + countCheckedUsers);
 	}
 }

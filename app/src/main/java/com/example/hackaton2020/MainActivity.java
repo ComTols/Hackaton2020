@@ -89,25 +89,6 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		super.onResume();
 	}
 
-	//Beim pausieren der Methode wird diese Methode aufgerufen (zB. Activity gerät in den Hintergrund)
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
-
-	//Beim beenden der Activity wird diese Mathode aufgerufen (zB. beim minimieren)
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
-
-	//Nach dem beenden und beim zurückkehren in die Activity wird diese Methode aufgerufen
-	//Ruft onStart() auf
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-	}
-
 	//Beim endgültigen beenden wird diese Methode aufgerufen
 	@Override
 	protected void onDestroy() {
@@ -117,8 +98,12 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
 	@Override
 	public void handleResult(Result rawResult) {
+		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
+		//TODO: QR-Code Syntax validieren
+		//TODO: Bereits eingetragen überprüfen
 		textResult.setText(rawResult.getText());
 		Intent intentCheckPerson = new Intent(this, CheckPerson.class);
+		intentCheckPerson.putExtra("qrResult", rawResult.getText());
 		startActivity(intentCheckPerson);
 	}
 }

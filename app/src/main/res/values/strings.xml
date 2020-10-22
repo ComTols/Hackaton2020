@@ -26,4 +26,6 @@
 	<string name="showReady_personCount">5</string>
 	<string name="showReady_personCountDescription">... Personen registriert.</string>
 	<string name="back">Zurück</string>
+	<string name="main_codeResult">Kein QR-Code gefunden</string>
+	<string name="main_IconDescription">Menu Icon</string>
 </resources>
