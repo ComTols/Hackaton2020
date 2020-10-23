@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 public class CreateAccount extends AppCompatActivity {
 
 	//Setzte Checkboxen als Felder
@@ -28,12 +30,13 @@ public class CreateAccount extends AppCompatActivity {
 	//Setzte Weiter-Button als Feld
 	private Button cont;
 
+	private ChargedData chargedData;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_create_account);
 		super.onCreate(savedInstanceState);
 
-		//Fülle Felder
 		letter = findViewById(R.id.login_messageOption_letter);
 		mail = findViewById(R.id.login_messageOption_mail);
 		push = findViewById(R.id.login_messageOption_push);
@@ -135,23 +138,30 @@ public class CreateAccount extends AppCompatActivity {
 			SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
 			SharedPreferences.Editor editor = accountDetails.edit();
 
+			chargedData = new ChargedData();
+			ChargedData.User user = new ChargedData.User();
+
 			editor.putBoolean("initialized", true);
-			editor.putBoolean("messageLetter", letter.isChecked());
-			editor.putBoolean("messageMail", mail.isChecked());
-			editor.putBoolean("messagePush", push.isChecked());
-			editor.putBoolean("messageInApp", true);
+			user.messageLetter = letter.isChecked();
+			user.messageMail = mail.isChecked();
+			chargedData.setMessagePush(push.isChecked());
+			chargedData.setMessageInApp(true);
 
 			if(letter.isChecked()) {
-				editor.putString("forename", forename.getText().toString());
-				editor.putString("forename", name.getText().toString());
-				editor.putString("forename", street.getText().toString());
-				editor.putString("forename", plz.getText().toString());
-				editor.putString("forename", city.getText().toString());
+				user.forename = forename.getText().toString();
+				user.name = name.getText().toString();
+				user.street = street.getText().toString();
+				user.postcode = plz.getText().toString();
+				user.city = city.getText().toString();
 			}
 			if(mail.isChecked()) {
-				editor.putString("mail", mailTxt.getText().toString());
+				user.mail = mailTxt.getText().toString();
 			}
 
+			chargedData.setSelf(user);
+			Gson gson = new Gson();
+			String json = gson.toJson(chargedData);
+			editor.putString("savedData", json);
 			editor.apply();
 
 			finish();

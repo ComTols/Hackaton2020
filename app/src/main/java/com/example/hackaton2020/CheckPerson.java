@@ -15,6 +15,10 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class CheckPerson extends AppCompatActivity {
@@ -24,6 +28,7 @@ public class CheckPerson extends AppCompatActivity {
 	Button finishButton;
 	String[] qrResult;
 	TextView headline;
+	ChargedData chargedData;
 
 	@SuppressLint("SetTextI18n")
 	@Override
@@ -58,14 +63,30 @@ public class CheckPerson extends AppCompatActivity {
 
 	private void onClickFinishButton() {
 		//TODO: Schreibe Besuchszeit in SharedPreferences
+		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
+
+
+
+
+		ChargedData.Events event = new ChargedData.Events();
+		event.qrToEvent(qrResult);
 
 		SparseBooleanArray checked = otherUsersList.getCheckedItemPositions();
 		int countChecked = 0;
-		for(int i = 0; i < otherUsersList.getCount(); i++) {
-			if(checked.get(i)) {
+		for(int j = 0; j < otherUsersList.getCount(); j++) {
+			if(checked.get(j)) {
 				countChecked++;
+				if(countChecked > 1) {
+					//TODO: User zu diesem Event hinzufügen
+				}
 			}
 		}
+		SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
+		SharedPreferences.Editor editor = accountDetails.edit();
+		Gson gson = new Gson();
+		String json = gson.toJson(chargedData);
+		editor.putString("savedData", json);
+		editor.apply();
 
 		Intent intentShowReady = new Intent(this, ShowReady.class);
 		intentShowReady.putExtra("countCheckedUsers", countChecked);
@@ -81,11 +102,16 @@ public class CheckPerson extends AppCompatActivity {
 	private void checkOtherUsersArray() {
 		System.out.println("Checke auf neue Personen");
 		SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
+
+		String json = accountDetails.getString("savedData", null);
+		Gson gson = new Gson();
+		Type type = new TypeToken<ChargedData>() {}.getType();
+		System.out.println(json);
+		chargedData = gson.fromJson(json, type);
+
 		otherUsers.clear();
-		int i = 0;
-		while(accountDetails.contains("otherUser["+i+"]")) {
-			otherUsers.add(accountDetails.getString("otherUser["+i+"]_forename", "")+ " " + accountDetails.getString("otherUser["+i+"]_lastname", ""));
-			i++;
+		for(int i = 0; i < chargedData.getOtherUsers().size(); i++) {
+			otherUsers.add(chargedData.getOtherUsers().get(i).forename + " " + chargedData.getOtherUsers().get(i).name);
 		}
 		otherUsers.add(0, getResources().getString(R.string.checkPerson_whoIsGuest_me));
 		ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, otherUsers) {

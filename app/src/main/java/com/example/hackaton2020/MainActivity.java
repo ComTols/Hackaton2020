@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -23,13 +25,15 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.lang.reflect.Type;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
 	private ZXingScannerView scannerView;
 	private TextView textResult;
-	private ImageButton menuButton;
+	private ChargedData chargedData;
 
 	//Beim erstellen der Activity wird diese Methode aufgerufen
 	//Ruft onStart() auf
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		scannerView = findViewById(R.id.zxscan);
 		textResult = findViewById(R.id.txtBarcodeValue);
 
-		menuButton = findViewById(R.id.buttonToMenu);
+		ImageButton menuButton = findViewById(R.id.buttonToMenu);
 		menuButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -68,6 +72,12 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		if (!accountDetails.contains("initialized")) {
 			Intent intentCreateAccount = new Intent(this, CreateAccount.class);
 			startActivity(intentCreateAccount);
+		} else {
+			String json = accountDetails.getString("savedData", null);
+			Gson gson = new Gson();
+			Type type = new TypeToken<ChargedData>() {}.getType();
+			System.out.println(json);
+			chargedData = gson.fromJson(json, type);
 		}
 	}
 

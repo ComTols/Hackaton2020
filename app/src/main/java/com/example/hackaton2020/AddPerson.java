@@ -12,6 +12,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+
 public class AddPerson extends AppCompatActivity {
 
 	private CheckBox letterCheck;
@@ -80,25 +85,38 @@ public class AddPerson extends AppCompatActivity {
 		EditText lastname = findViewById(R.id.addPerson_lastname);
 
 		SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
+
+		//Lesen
+		String json = accountDetails.getString("savedData", null);
+		Gson gson = new Gson();
+		Type type = new TypeToken<ChargedData>() {}.getType();
+		System.out.println(json);
+		ChargedData chargedData = gson.fromJson(json, type);
+
+		//Konstruieren
+		ChargedData.User user = new ChargedData.User();
+
 		SharedPreferences.Editor edit = accountDetails.edit();
-		int i = 0;
-		while (accountDetails.contains("otherUser[" + i + "]")) {
-			i++;
-		}
-		edit.putBoolean("otherUser[" + i + "]", true);
-		edit.putString("otherUser[" + i + "]_forename", forename.getText().toString());
-		edit.putString("otherUser[" + i + "]_lastname", lastname.getText().toString());
+		user.forename = forename.getText().toString();
+		user.name = lastname.getText().toString();
 		if (letterCheck.isChecked()) {
-			edit.putBoolean("otherUser[" + i + "]_informByLetter", true);
-			edit.putString("otherUser[" + i + "]_street", ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_street)).getText().toString());
-			edit.putString("otherUser[" + i + "]_postcode", ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_postcode)).getText().toString());
-			edit.putString("otherUser[" + i + "]_city", ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_city)).getText().toString());
+			user.messageLetter = true;
+			user.street = ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_street)).getText().toString();
+			user.postcode = ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_postcode)).getText().toString();
+			user.city = ((EditText) findViewById(R.id.addPerson_messageOption_letter_details_city)).getText().toString();
 
 		}
 		if (mailCheck.isChecked()) {
-			edit.putBoolean("otherUser[" + i + "]_informByMail", true);
-			edit.putString("otherUser[" + i + "]_mail", ((EditText) findViewById(R.id.addPerson_messageOption_mail_details_mailAdress)).getText().toString());
+			user.messageMail = true;
+			user.mail = ((EditText) findViewById(R.id.addPerson_messageOption_mail_details_mailAdress)).getText().toString();
 		}
+
+		//Füllen
+		chargedData.addOtherUser(user);
+
+		//Schreiben
+		json = gson.toJson(chargedData);
+		edit.putString("savedData", json);
 
 		edit.apply();
 		finish();
