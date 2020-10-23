@@ -29,4 +29,7 @@
 	<string name="main_codeResult">Kein QR-Code gefunden</string>
 	<string name="main_IconDescription">Menu Icon</string>
 	<string name="home_screen_camerabutton">Kamera</string>
+	<string name="home_screen_appname">Hackathon</string>
+	<string name="home_screen_open">Öffnen</string>
+	<string name="home_screen_close">Schließen</string>
 </resources>

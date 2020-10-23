@@ -1,16 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Hackaton2020" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
-        <item name="colorOnPrimary">@color/blackBackground</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/primary</item>
-        <item name="colorSecondaryVariant">@color/primary_dark</item>
-        <item name="colorOnSecondary">@color/blackBackground</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+<!-- Base application theme. -->
+<style name="Theme.Hackaton2020" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/blackForegroundHighEmphasis</item>
+    <item name="colorPrimaryVariant">@color/blackForegroundNormal</item>
+    <item name="colorOnPrimary">@color/blackBackground</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/primary</item>
+    <item name="colorSecondaryVariant">@color/primary_dark</item>
+    <item name="colorOnSecondary">@color/blackBackground</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+    <item name="titleTextColor">@color/TextHighEmphasis</item>
+
+    <item name="android:textColorHighlight">@color/TextHighEmphasis</item>
+    <item name="android:textColor">@color/TextMediumEmphasis</item>
+    <item name="android:textColorPrimaryDisableOnly">@color/TextDisabled</item>
+    <item name="background">@color/blackBackground</item>
+</style>
 </resources>
