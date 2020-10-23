@@ -28,4 +28,5 @@
 	<string name="back">Zurück</string>
 	<string name="main_codeResult">Kein QR-Code gefunden</string>
 	<string name="main_IconDescription">Menu Icon</string>
+	<string name="home_screen_camerabutton">Kamera</string>
 </resources>
