@@ -46,32 +46,12 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <LinearLayout
+                android:id="@+id/linearLayoutMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingTop="7.5dp"
-                android:paddingBottom="7.5dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/CardView4"
-                    style="@style/CardViewsHome">
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/CardView3"
-                    style="@style/CardViewsHome" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/CardView2"
-                    style="@style/CardViewsHome" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/CardView1"
-                    style="@style/CardViewsHome">
-
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
+                android:paddingBottom="7.5dp"/>
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

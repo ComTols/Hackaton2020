@@ -2,9 +2,9 @@
 <resources>
     <style name="CardViewsHome">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">175dp</item>
-        <item name="android:layout_marginTop">7.5dp</item>
+        <item name="android:layout_height">100dp</item>
         <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">7.5dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginBottom">7.5dp</item>
         <item name="android:shadowRadius">0</item>

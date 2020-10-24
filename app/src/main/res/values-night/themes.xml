@@ -15,7 +15,6 @@
         <item name="titleTextColor">@color/TextHighEmphasis</item>
 
         <item name="android:textColorHighlight">@color/TextHighEmphasis</item>
-        <item name="android:textColor">@color/TextMediumEmphasis</item>
         <item name="android:textColorPrimaryDisableOnly">@color/TextDisabled</item>
         <item name="background">@color/blackBackground</item>
     </style>

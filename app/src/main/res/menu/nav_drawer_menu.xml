@@ -6,11 +6,6 @@
         android:title="Infektion melden"/>
 
     <item
-        android:id="@+id/item2"
-        android:title="Item 2"/>
-
-    <item
         android:id="@+id/item3"
-        android:title="Lokal / Veranstaltung registrieren"
-        android:gravity="bottom"/>
+        android:title="Lokal / Veranstaltung registrieren"/>
 </menu>
