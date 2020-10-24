@@ -3,6 +3,8 @@ package com.example.hackaton2020;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class AddPerson extends AppCompatActivity {
 
@@ -119,6 +122,10 @@ public class AddPerson extends AppCompatActivity {
 		edit.putString("savedData", json);
 
 		edit.apply();
+		Intent i = new Intent();
+		json = gson.toJson(user);
+		i.putExtra("newPerson", json);
+		setResult(Activity.RESULT_OK, i);
 		finish();
 	}
 

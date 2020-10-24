@@ -2,7 +2,9 @@ package com.example.hackaton2020;
 
 import android.Manifest;
 import android.app.AlarmManager;
+import android.app.Dialog;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -12,7 +14,11 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
@@ -34,6 +40,39 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	private ZXingScannerView scannerView;
 	private TextView textResult;
 	private ChargedData chargedData;
+	private String questEventID;
+
+	private class Dialog extends AppCompatDialogFragment {
+		private MainActivity mainActivity;
+
+		Dialog(MainActivity main) {
+			super();
+			this.mainActivity = main;
+		}
+
+		@NonNull
+		@Override
+		public android.app.Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setTitle("Bereits registriert.")
+					.setMessage("Möchten Sie sich aus dem Restaurant abmelden oder eine weitere Person hinzufügen?")
+					.setPositiveButton("Hinzufügen", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intentCheckPerson = new Intent(mainActivity, CheckPerson.class);
+					//TODO: Personen dem Event zuordnen
+					intentCheckPerson.putExtra("joinUserToEvent", true);
+					startActivity(intentCheckPerson);
+				}
+			}).setNegativeButton("Abmelden", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					mainActivity.logout(mainActivity.questEventID);
+				}
+			});
+			return super.onCreateDialog(savedInstanceState);
+		}
+	}
 
 	//Beim erstellen der Activity wird diese Methode aufgerufen
 	//Ruft onStart() auf
@@ -47,8 +86,6 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		PendingIntent startServicePendingIntent = PendingIntent.getService(this, 0, startServiceIntent,0);
 
 		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000*10, 1000*60*60, startServicePendingIntent);
-
-		checkAccountInitialized();
 
 		scannerView = findViewById(R.id.zxscan);
 		textResult = findViewById(R.id.txtBarcodeValue);
@@ -120,11 +157,34 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	@Override
 	public void handleResult(Result rawResult) {
 		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
-		//TODO: QR-Code Syntax validieren
 		//TODO: Bereits eingetragen überprüfen
+		if(rawResult.getText().split("~").length != 7) {
+			textResult.setText("QR-Code nicht korrekt!");
+			return;
+		}
+		SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
+		String json = accountDetails.getString("savedData", null);
+		Gson gson = new Gson();
+		Type type = new TypeToken<ChargedData>() {}.getType();
+		System.out.println(json);
+		ChargedData chargedData = gson.fromJson(json, type);
+
+		for(int i = 0; i < chargedData.getEvents().size(); i++) {
+			ChargedData.Events event = chargedData.getEvents().get(i);
+			if(event.id == rawResult.getText().split("~")[1]) {
+				questEventID = event.id;
+				Dialog dialog = new Dialog(this);
+				dialog.show(getSupportFragmentManager(), "example dialog");
+			}
+		}
+
 		textResult.setText(rawResult.getText());
 		Intent intentCheckPerson = new Intent(this, CheckPerson.class);
 		intentCheckPerson.putExtra("qrResult", rawResult.getText());
 		startActivity(intentCheckPerson);
+	}
+
+	private void logout(String eventID) {
+		//TODO: Aus Event ausloggen
 	}
 }

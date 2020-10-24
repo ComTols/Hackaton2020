@@ -13,6 +13,7 @@
 		android:layout_marginTop="16dp"
 		android:text="@string/addPerson_headline"
 		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +53,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="24dp"
 		android:text="@string/forename"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/addPerson_headline" />
 
@@ -63,6 +65,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="8dp"
 		android:text="@string/lastname"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtforename_error" />
 
@@ -98,6 +101,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="16dp"
 		android:text="@string/login_messageOption_letter"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/addPerson_txtlastname_error" />
 
@@ -193,6 +197,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="8dp"
 		android:text="@string/login_messageOption_mail"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/addPerson_messageOption_letter_details" />
 

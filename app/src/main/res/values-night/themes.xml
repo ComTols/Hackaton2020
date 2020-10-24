@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blackForegroundHighEmphasis</item>
         <item name="colorPrimaryVariant">@color/blackForegroundNormal</item>
-        <item name="colorOnPrimary">@color/blackBackground</item>
+        <item name="colorOnPrimary">@color/TextMediumEmphasis</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/primary</item>
         <item name="colorSecondaryVariant">@color/primary_dark</item>
@@ -19,4 +19,4 @@
         <item name="android:textColorPrimaryDisableOnly">@color/TextDisabled</item>
         <item name="background">@color/blackBackground</item>
     </style>
-</resources> 
+</resources>

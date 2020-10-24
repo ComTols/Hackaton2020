@@ -29,6 +29,7 @@
 		android:layout_marginTop="16dp"
 		android:checked="false"
 		android:text="@string/login_messageOption_letter"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/login_headtitel" />
 
@@ -51,6 +52,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Name:"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,6 +63,7 @@
 			android:ems="10"
 			android:hint="Name"
 			android:inputType="textPersonName"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtname" />
 
@@ -69,6 +72,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Vorname:"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="@+id/login_messageOption_letter_detail_firstname"
 			app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,6 +85,7 @@
 			android:ems="10"
 			android:hint="Vorname"
 			android:inputType="textPersonName"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toEndOf="@+id/login_messageOption_letter_detail_name"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtname" />
 
@@ -90,6 +95,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:text="Straße + Hausnr.:"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_name" />
 
@@ -100,6 +106,7 @@
 			android:ems="10"
 			android:hint="Straße + Hausnr."
 			android:inputType="textPersonName"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtstreet" />
 
@@ -109,6 +116,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
 			android:text="PLZ"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_street" />
 
@@ -119,6 +127,7 @@
 			android:ems="10"
 			android:hint="PLZ"
 			android:inputType="numberSigned"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtpostcode" />
 
@@ -130,6 +139,7 @@
 			android:layout_marginLeft="8dp"
 			android:layout_marginTop="8dp"
 			android:text="Ort"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toEndOf="@+id/login_messageOption_letter_detail_postcode"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_street" />
 
@@ -140,6 +150,7 @@
 			android:ems="10"
 			android:hint="Ort"
 			android:inputType="textPersonName"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="@+id/login_messageOption_letter_detail_txtcity"
 			app:layout_constraintTop_toBottomOf="@+id/login_messageOption_letter_detail_txtcity" />
 
@@ -164,6 +175,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="8dp"
 		android:text="@string/login_messageOption_mail"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_errorLetter" />
 
@@ -188,6 +200,7 @@
 			android:ems="10"
 			android:hint="E-Mail"
 			android:inputType="textEmailAddress"
+			android:textColor="?attr/colorOnPrimary"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
@@ -211,6 +224,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="8dp"
 		android:text="@string/login_messageOption_push"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_errorMail" />
 
@@ -224,6 +238,7 @@
 		android:checked="true"
 		android:clickable="false"
 		android:text="@string/login_messageOption_app"
+		android:textColor="?attr/colorOnPrimary"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/login_messageOption_push" />
 

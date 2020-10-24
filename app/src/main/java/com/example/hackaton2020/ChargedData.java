@@ -45,7 +45,7 @@ public class ChargedData {
 		public String city;
 		public String details;
 		public Long startTime;
-		public ArrayList<User> invitetUsers;
+		public ArrayList<User> invitetUsers = new ArrayList<>();
 
 		public Events(String type, String id, String name, String street, String plz, String city, String details, Long startTime, ArrayList<User> invitetUsers) {
 			this.type = type;
@@ -54,6 +54,7 @@ public class ChargedData {
 			this.plz = plz;
 			this.city = city;
 			this.details = details;
+			//TODO: Zeit richtig einfügen + endzeit
 			this.startTime = startTime;
 			this.invitetUsers = invitetUsers;;
 
@@ -81,7 +82,7 @@ public class ChargedData {
 
 	//Andere Nutzer
 	private ArrayList<User> otherUsers = new ArrayList<>();
-	private int nextUserId;
+	public int nextUserId;
 
 	//Events
 	private ArrayList<Events> events = new ArrayList<>();
@@ -140,6 +141,10 @@ public class ChargedData {
 		events.add(newEvent);
 	}
 
+	public void addEvent(Events event) {
+		this.events.add(event);
+	}
+
 	public int getOtherUserIdByFullName(String fullName) {
 		for(int i = 0; i < otherUsers.size(); i++) {
 			User user = otherUsers.get(i);
@@ -148,6 +153,15 @@ public class ChargedData {
 			}
 		}
 		return -1;
+	}
+
+	public User getUserByFullName(String name) {
+		for(int i = 0; i < otherUsers.size(); i++) {
+			if((otherUsers.get(i).forename + " " + otherUsers.get(i).name).equals(name)) {
+				return otherUsers.get(i);
+			}
+		}
+		return null;
 	}
 
 	public void addOtherUser(User user) {

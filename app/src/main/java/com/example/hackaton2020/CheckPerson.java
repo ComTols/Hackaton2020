@@ -1,5 +1,6 @@
 package com.example.hackaton2020;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class CheckPerson extends AppCompatActivity {
 
 	ArrayList<String> otherUsers = new ArrayList<>();
+	ArrayList<ChargedData.User> users = new ArrayList();
 	ListView otherUsersList;
 	Button finishButton;
 	String[] qrResult;
@@ -65,9 +68,6 @@ public class CheckPerson extends AppCompatActivity {
 		//TODO: Schreibe Besuchszeit in SharedPreferences
 		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
 
-
-
-
 		ChargedData.Events event = new ChargedData.Events();
 		event.qrToEvent(qrResult);
 
@@ -77,10 +77,20 @@ public class CheckPerson extends AppCompatActivity {
 			if(checked.get(j)) {
 				countChecked++;
 				if(countChecked > 1) {
-					//TODO: User zu diesem Event hinzufügen
+					if(getIntent().getBooleanExtra("joinUserToEvent", false)) {
+						//TODO: User hinzufügen, wenn Event bereist existiert
+					} else {
+						String name = ((CheckedTextView)otherUsersList.getChildAt(j)).getText().toString();
+						System.out.println(name);
+						ChargedData.User user = chargedData.getUserByFullName(name);
+						if(user == null) System.out.println("User ist Null");
+						System.out.println(user);
+						event.invitetUsers.add(user);
+					}
 				}
 			}
 		}
+		chargedData.addEvent(event);
 		SharedPreferences accountDetails = getSharedPreferences("accountDetails", MODE_PRIVATE);
 		SharedPreferences.Editor editor = accountDetails.edit();
 		Gson gson = new Gson();
@@ -130,6 +140,18 @@ public class CheckPerson extends AppCompatActivity {
 
 	protected void onClickAddPerson() {
 		Intent intentAddPerson = new Intent(this, AddPerson.class);
-		startActivity(intentAddPerson);
+		startActivityForResult(intentAddPerson, 1);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == 1) {
+			if(resultCode == RESULT_OK) {
+				Gson gson = new Gson();
+				users.add(new Gson().fromJson(data.getStringExtra("newPerson"), new TypeToken<ChargedData.User>() {}.getType()));
+			}
+		}
 	}
 }
