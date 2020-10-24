@@ -1,6 +1,11 @@
 package com.example.hackaton2020;
 
+import android.annotation.SuppressLint;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ChargedData {
 
@@ -44,10 +49,12 @@ public class ChargedData {
 		public String plz;
 		public String city;
 		public String details;
-		public Long startTime;
+		public String startTime;
+		public String endTime;
 		public ArrayList<User> invitetUsers = new ArrayList<>();
 
-		public Events(String type, String id, String name, String street, String plz, String city, String details, Long startTime, ArrayList<User> invitetUsers) {
+		@SuppressLint("SimpleDateFormat")
+		public Events(String type, String id, String name, String street, String plz, String city, String details, Date startTime, ArrayList<User> invitetUsers) {
 			this.type = type;
 			this.name = name;
 			this.street = street;
@@ -55,13 +62,16 @@ public class ChargedData {
 			this.city = city;
 			this.details = details;
 			//TODO: Zeit richtig einfügen + endzeit
-			this.startTime = startTime;
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy-HH/mm/ss");
+			this.startTime = format.format(startTime);
 			this.invitetUsers = invitetUsers;;
 
 		}
 
 		public Events() {
-			this.startTime = System.currentTimeMillis();
+			Date date = Calendar.getInstance().getTime();
+			@SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy-HH/mm/ss");
+			this.startTime = format.format(date);
 		}
 
 		public void qrToEvent(String[] qrResult) {
@@ -130,7 +140,7 @@ public class ChargedData {
 	}
 
 	public void addEvent(String type, String id, String name, String street, String plz, String city, String details, int[] otherUserIDs) {
-		Events newEvent = new Events(type,id, name,street,plz,city,details,System.currentTimeMillis(),null);
+		Events newEvent = new Events(type,id, name,street,plz,city,details,Calendar.getInstance().getTime(),null);
 		for(int i = 0; i < otherUsers.size(); i++) {
 			for(int j = 0; j < otherUserIDs.length; j++) {
 				if(otherUsers.get(i).hasID(otherUserIDs[j])) {
@@ -159,6 +169,24 @@ public class ChargedData {
 		for(int i = 0; i < otherUsers.size(); i++) {
 			if((otherUsers.get(i).forename + " " + otherUsers.get(i).name).equals(name)) {
 				return otherUsers.get(i);
+			}
+		}
+		return null;
+	}
+
+	public Events getEventById(String id) {
+		for(int i = 0; i < events.size(); i++) {
+			if(events.get(i).id.equals(id)) {
+				return events.get(i);
+			}
+		}
+		return null;
+	}
+
+	public Events getNotFinishedEvent() {
+		for(int i = 0; i < events.size(); i++) {
+			if(events.get(i).endTime.equals(null)) {
+				return events.get(i);
 			}
 		}
 		return null;

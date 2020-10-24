@@ -1,6 +1,7 @@
 package com.example.hackaton2020;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
@@ -32,6 +33,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -40,39 +43,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	private ZXingScannerView scannerView;
 	private TextView textResult;
 	private ChargedData chargedData;
-	private String questEventID;
-
-	private class Dialog extends AppCompatDialogFragment {
-		private MainActivity mainActivity;
-
-		Dialog(MainActivity main) {
-			super();
-			this.mainActivity = main;
-		}
-
-		@NonNull
-		@Override
-		public android.app.Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-			builder.setTitle("Bereits registriert.")
-					.setMessage("Möchten Sie sich aus dem Restaurant abmelden oder eine weitere Person hinzufügen?")
-					.setPositiveButton("Hinzufügen", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Intent intentCheckPerson = new Intent(mainActivity, CheckPerson.class);
-					//TODO: Personen dem Event zuordnen
-					intentCheckPerson.putExtra("joinUserToEvent", true);
-					startActivity(intentCheckPerson);
-				}
-			}).setNegativeButton("Abmelden", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					mainActivity.logout(mainActivity.questEventID);
-				}
-			});
-			return super.onCreateDialog(savedInstanceState);
-		}
-	}
+	public String questEventID;
 
 	//Beim erstellen der Activity wird diese Methode aufgerufen
 	//Ruft onStart() auf
@@ -171,10 +142,13 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 
 		for(int i = 0; i < chargedData.getEvents().size(); i++) {
 			ChargedData.Events event = chargedData.getEvents().get(i);
-			if(event.id == rawResult.getText().split("~")[1]) {
+			System.out.println(rawResult.getText().split("~")[1]);
+			if(event.id.equals(rawResult.getText().split("~")[1])) {
+				System.out.println("Event gefunden!");
 				questEventID = event.id;
+				//TODO: Fix Dialog
 				Dialog dialog = new Dialog(this);
-				dialog.show(getSupportFragmentManager(), "example dialog");
+				dialog.show();
 			}
 		}
 
@@ -184,7 +158,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		startActivity(intentCheckPerson);
 	}
 
-	private void logout(String eventID) {
-		//TODO: Aus Event ausloggen
+	@SuppressLint("SimpleDateFormat")
+	public void logout(String eventID) {
+		chargedData.getEventById(eventID).endTime = new SimpleDateFormat("dd/MM/yyyy-HH/mm/ss").format(Calendar.getInstance().getTime());
 	}
 }
