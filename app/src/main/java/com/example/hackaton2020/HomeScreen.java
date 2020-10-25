@@ -71,12 +71,17 @@ public class HomeScreen extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
                 switch (item.getItemId()) {
-                    case R.id.item1:
-                        Toast.makeText(HomeScreen.this, "item1", Toast.LENGTH_SHORT).show();
+                    case R.id.infektionMelden:
+                        intent = new Intent(HomeScreen.this, RegisterInfection.class);
+                        startActivity(intent);
+                        //Toast.makeText(HomeScreen.this, "item1", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.item3:
-                        Toast.makeText(HomeScreen.this, "item3", Toast.LENGTH_SHORT).show();
+                    case R.id.veranstaltungRegistrieren:
+                        intent = new Intent(HomeScreen.this, GenerateQrCode.class);
+                        startActivity(intent);
+                        //Toast.makeText(HomeScreen.this, "item3", Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 return true;

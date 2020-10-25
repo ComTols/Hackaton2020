@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item1"
+        android:id="@+id/infektionMelden"
         android:title="Infektion melden"/>
 
     <item
-        android:id="@+id/item3"
+        android:id="@+id/veranstaltungRegistrieren"
         android:title="Lokal / Veranstaltung registrieren"/>
 </menu>

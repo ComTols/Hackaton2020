@@ -71,10 +71,9 @@ public class restaurant_info extends AppCompatActivity {
         TextView adresse2 = findViewById(R.id.PostleitzahlOrt);
         TextView anfang = findViewById(R.id.AnfangBesuchszeit);
         TextView ende = findViewById(R.id.EndeBesuchszeit);
-        ArrayList<ChargedData.User> guests = chargedData.getOtherUsers();
 
+        ArrayList<ChargedData.User> invitedUsers = events.get(id).invitetUsers;
 
-        System.out.println(events.get(id).name);
         restaurantName.setText(events.get(id).name);
         adresse1.setText(events.get(id).street);
         adresse2.setText(events.get(id).plz + " " + events.get(id).city);
@@ -83,10 +82,10 @@ public class restaurant_info extends AppCompatActivity {
 
         LinearLayout linearLayout = findViewById(R.id.linearLayoutRight);
 
-        for(int i=0; i< guests.size(); i++)
+        for(int i=0; i< invitedUsers.size(); i++)
         {
             TextView textView = new TextView(this);
-            textView.setText(guests.get(i).forename + " " + guests.get(i).name);
+            textView.setText(invitedUsers.get(i).forename + " " + invitedUsers.get(i).name);
             linearLayout.addView(textView);
         }
     }
