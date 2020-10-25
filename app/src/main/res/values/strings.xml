@@ -46,9 +46,12 @@
 	<string name="register_infection_button">Absenden</string>
 	<string name="register_infection_text_part1">Kontaktiere Deine lokale Gesundheitsbehörde unter folgender Nummer:</string>
 	<string name="register_infection_text_part2">und erhalte einen Bestätigungscode.</string>
-	<string name="generate_qr_code_title">Als Veranstalter registrieren</string>
+	<string name="generate_qr_code_title">QR-Code registrieren</string>
 	<string name="generate_qr_code_attr1">Veranstaltungsname</string>
-	<string name="generate_qr_code_attr2">Straße + Hausnummer</string>
-	<string name="generate_qr_code_attr3">PLZ + Ort</string>
+	<string name="generate_qr_code_attr2">Straße + Hausnr.</string>
+	<string name="generate_qr_code_attr3">PLZ</string>
+	<string name="generate_qr_code_attr4">Ort</string>
 	<string name="generate_qr_code_button">QR-Code generieren</string>
+	<string name="generate_qr_code_spinner">Veranstaltungsart</string>
+	<string name="generate_qr_code_attr5">Details</string>
 </resources>

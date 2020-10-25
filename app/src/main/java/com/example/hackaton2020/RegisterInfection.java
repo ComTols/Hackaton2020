@@ -26,8 +26,7 @@ public class RegisterInfection extends AppCompatActivity {
 
     private void onActionButtonClick()
     {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        navigateUpTo(new Intent(getBaseContext(), HomeScreen.class));
         finish();
     }
 }

@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,6 +28,7 @@ public class restaurant_info extends AppCompatActivity {
 
     public int id;
     private Toolbar toolbar2;
+    public FloatingActionButton actionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,26 @@ public class restaurant_info extends AppCompatActivity {
             Toast.makeText(this, "Fehler", Toast.LENGTH_SHORT).show();
             Toast.makeText(this, "App bitte neu starten", Toast.LENGTH_SHORT).show();
         }
+
+        FloatingActionButton actionButton = findViewById(R.id.buttonEndTime);
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopEventTimer();
+            }
+        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    public void stopEventTimer()
+    {
+        Intent intent = new Intent(this, ShowLoggedOut.class);
+        startActivity(intent);
     }
 
     private void fillRestaurantInfo() {
@@ -87,6 +104,15 @@ public class restaurant_info extends AppCompatActivity {
             TextView textView = new TextView(this);
             textView.setText(invitedUsers.get(i).forename + " " + invitedUsers.get(i).name);
             linearLayout.addView(textView);
+        }
+
+        actionButton = findViewById(R.id.buttonEndTime);
+        if(events.get(id).endTime == "" || events.get(id).endTime == null)
+        {
+            actionButton.setVisibility(View.VISIBLE);
+        }else
+        {
+            actionButton.setVisibility(View.INVISIBLE);
         }
     }
 }
