@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 		Intent startServiceIntent = new Intent(this, CheckServerService.class);
 		PendingIntent startServicePendingIntent = PendingIntent.getService(this, 0, startServiceIntent,0);
 
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000*10, 1000*60*60, startServicePendingIntent);
+		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000*1, 1000*5, startServicePendingIntent);
 
 		scannerView = findViewById(R.id.zxscan);
 		textResult = findViewById(R.id.txtBarcodeValue);

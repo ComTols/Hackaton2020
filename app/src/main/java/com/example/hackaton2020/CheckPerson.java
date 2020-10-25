@@ -65,7 +65,6 @@ public class CheckPerson extends AppCompatActivity {
 	}
 
 	private void onClickFinishButton() {
-		//TODO: Schreibe Besuchszeit in SharedPreferences
 		//QR-Code Syntax: Veranstaltungstyp~ID~Name~Straße+Hausnr.~PLZ~Ort~Details
 
 		ChargedData.Events event = new ChargedData.Events();

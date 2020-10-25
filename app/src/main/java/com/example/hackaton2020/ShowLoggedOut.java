@@ -46,6 +46,8 @@ public class ShowLoggedOut extends AppCompatActivity {
 			System.out.println("WARNUNG!");
 		} */
 
+		//TODO: Zeit richtig machen
+
 		SharedPreferences.Editor editor = accountDetails.edit();
 		editor.putString("savedData", new Gson().toJson(chargedData));
 		editor.apply();

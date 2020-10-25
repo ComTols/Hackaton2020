@@ -61,7 +61,6 @@ public class ChargedData {
 			this.plz = plz;
 			this.city = city;
 			this.details = details;
-			//TODO: Zeit richtig einfügen + endzeit
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy-HH/mm/ss");
 			this.startTime = format.format(startTime);
 			this.invitetUsers = invitetUsers;
