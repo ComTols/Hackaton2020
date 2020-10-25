@@ -148,8 +148,8 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 				System.out.println("Event gefunden!");
 				questEventID = event.id;
 				//TODO: Fix Dialog
-				Dialog dialog = new Dialog(this);
-				dialog.show();
+				//Dialog dialog = new Dialog(this);
+				//dialog.show();
 			}
 		}
 

@@ -97,10 +97,11 @@ public class CheckPerson extends AppCompatActivity {
 		String json = gson.toJson(chargedData);
 		editor.putString("savedData", json);
 		editor.apply();
-
+		//TODO: Nac eintragen der Person ist sie in der Datenbank eingetragen, aber nicht mit einer Checkbox markiert.
 		Intent intentShowReady = new Intent(this, ShowReady.class);
 		intentShowReady.putExtra("countCheckedUsers", countChecked);
 		startActivity(intentShowReady);
+		finish();
 	}
 
 	@Override

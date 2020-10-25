@@ -185,7 +185,7 @@ public class ChargedData {
 
 	public Events getNotFinishedEvent() {
 		for(int i = 0; i < events.size(); i++) {
-			if(events.get(i).endTime.equals(null)) {
+			if(events.get(i).endTime == null || events.get(i).endTime.isEmpty()) {
 				return events.get(i);
 			}
 		}
@@ -194,5 +194,13 @@ public class ChargedData {
 
 	public void addOtherUser(User user) {
 		this.otherUsers.add(user);
+	}
+
+	public void changeEventByStartTime(Events ev) {
+		for(int i = 0; i < events.size(); i++) {
+			if(events.get(i).startTime==ev.startTime) {
+				events.set(i, ev);
+			}
+		}
 	}
 }

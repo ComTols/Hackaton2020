@@ -25,12 +25,13 @@ public class ShowReady extends AppCompatActivity {
 		back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				navigateUpTo(new Intent(getBaseContext(), MainActivity.class));
+				navigateUpTo(new Intent(getBaseContext(), HomeScreen.class));
 			}
 		});
 
 		counter = findViewById(R.id.showReady_countUsers);
-
+		Intent i = new Intent(this, Notifications.class);
+		startService(i);
 	}
 
 	@Override

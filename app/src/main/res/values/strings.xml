@@ -32,6 +32,12 @@
 	<string name="home_screen_appname">Hackathon</string>
 	<string name="home_screen_open">Öffnen</string>
 	<string name="home_screen_close">Schließen</string>
+	<string name="showLoggedOut_headline">Erfolgreich abgemeldet</string>
+	<string name="showLoggedOut_description_1">Du hast dieses Restaurant/diese Veranstaltung</string>
+	<string name="showLoggedOut_description_2">lang besucht. Vielen Dank, dass du unsere App nutzt!</string>
+	<string name="notification_title">Sind Sie noch da?</string>
+	<string name="notification_text">Sie sind noch angemeldet. Wenn Sie das Event verlassen, melden Sie sich bitte ab.</string>
+	<string name="notification_action">ABMELDEN</string>
 	<string name="restaurant_info_Besuch_Anfang">Anfang Besuchszeit:</string>
 	<string name="restaurant_info_Besuch_Ende">Ende Besuchszeit:</string>
 	<string name="restaurant_info_Mitnahme_Personen">Mitgenommene Personen:</string>

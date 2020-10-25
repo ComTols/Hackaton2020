@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="?attr/colorSecondaryVariant"
+	tools:context=".ShowLoggedOut">
+
+	<ImageView
+		android:id="@+id/imageView"
+		android:layout_width="232dp"
+		android:layout_height="228dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.6"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/done_outline_foreground"
+		android:contentDescription="TODO" />
+
+	<TextView
+		android:gravity="center"
+		android:id="@+id/showLoggedOut_headline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:text="@string/showLoggedOut_headline"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:gravity="center"
+		android:id="@+id/showLoggedOut_description_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:text="@string/showLoggedOut_description_1"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+	<TextView
+		android:id="@+id/showLoggedOut_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="00:25 h"
+		android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/showLoggedOut_description_1" />
+
+	<TextView
+		android:gravity="center"
+		android:id="@+id/showLoggedOut_description_2"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginLeft="16dp"
+		android:layout_marginEnd="16dp"
+		android:layout_marginRight="16dp"
+		android:text="@string/showLoggedOut_description_2"
+		android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/showLoggedOut_time" />
+</androidx.constraintlayout.widget.ConstraintLayout>
