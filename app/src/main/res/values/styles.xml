@@ -2,12 +2,23 @@
 <resources>
     <style name="CardViewsHome">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_height">90dp</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">7.5dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginBottom">7.5dp</item>
         <item name="android:shadowRadius">0</item>
         <item name="cardBackgroundColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ToolbarStyles">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimaryVariant</item>
+        <!--just overriding existing toolbar style here-->
+        <item name="android:elevation">3dp</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="titleTextColor">?attr/titleTextColor</item>
     </style>
 </resources>

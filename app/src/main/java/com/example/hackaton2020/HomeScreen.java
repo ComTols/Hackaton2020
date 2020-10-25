@@ -7,8 +7,10 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.IntentCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.wifi.hotspot2.pps.HomeSp;
@@ -17,11 +19,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
@@ -42,6 +46,8 @@ public class HomeScreen extends AppCompatActivity {
     private LinearLayout linearLayout;
     private TextView textViewRestaurant;
     private TextView textViewDateTime;
+
+    public int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,15 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+        //functionality for qrCode-Buttton
+        FloatingActionButton qrcodeButton = findViewById(R.id.qrCodeButton);
+        qrcodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onQrCodeButtonClick();
+            }
+        });
+
         linearLayout = findViewById(R.id.linearLayoutMain);
         fillRestaurantCards();
     }
@@ -87,6 +102,12 @@ public class HomeScreen extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void onQrCodeButtonClick()
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void fillRestaurantCards()
@@ -102,11 +123,10 @@ public class HomeScreen extends AppCompatActivity {
 
         if(events.size() > 0)
         {
-            linearLayout = findViewById(R.id.linearLayoutMain);
-
             for(int i = events.size()-1; i >= 0; i--) {
-                drawCardsonHome(events.get(i).name, events.get(i).startTime);
+                drawCardsonHome(events.get(i).name, events.get(i).startTime, i);
             }
+
         }else{
             TextView textView = new TextView(this);
             textView.setText("Keine Veranstaltungen in den letzten 14 Tagen besucht.");
@@ -114,7 +134,7 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    public void drawCardsonHome(String restaurant, String datumUhrzeit)
+    public void drawCardsonHome(String restaurant, String datumUhrzeit, int id_local)
     {
         View cardView = getLayoutInflater().inflate(R.layout.add_home_screen_card, null, false);
 
@@ -125,5 +145,19 @@ public class HomeScreen extends AppCompatActivity {
         textViewDateTime.setText(datumUhrzeit);
 
         linearLayout.addView(cardView);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onHomeScreenCardClick(id_local);
+            }
+        });
+    }
+
+    private void onHomeScreenCardClick(int id_local)
+    {
+        Intent intent = new Intent(this, restaurant_info.class);
+        intent.putExtra("id_local",id_local);
+        startActivity(intent);
     }
 }

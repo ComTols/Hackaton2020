@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
 	private void onClickMenuButton() {
 		Intent intentHomeScreen = new Intent(this, HomeScreen.class);
 		startActivity(intentHomeScreen);
+		finish();
 	}
 
 	private void checkAccountInitialized() {
